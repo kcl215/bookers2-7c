@@ -12,9 +12,10 @@
         <tbody>
           <% @groups.each do |group| %>
             <tr>
-              <td>グループ画像を表示</td>
+              <td><%= attachment_image_tag(group, :image, size: "50x50", fallback: "no_image.jpg") %></td>
               <td><%= link_to group.name, group_path(group) %></td>
               <td><%= group.introduction %></td>
+              <td><%= group.users.length %></td>
               <td>
                 <% if group.owner_id == current_user.id %>
                   <%= link_to 'Edit', edit_group_path(group), class: "btn btn-sm btn-success" %>
